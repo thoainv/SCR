@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Dự Án</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="css/project_app1.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="app_view">
+        <div class="view" id="projects_view">
+            <div id="project-list-content" class="content">
+                <section class="section">
+                    <h1>Nom Nom Gallery</h1>
+                    <div class="grid">
+                        <div class="item">
+                            <div class="item__details">
+                                jelly-o brownie sweet
+                            </div>
+                        </div>
+                        <div class="item item--large">
+                            <div class="item__details">
+                                Muffin jelly gingerbread
+                            </div>
+                        </div>
+                        <div class="item item--medium">
+                            <div class="item__details">
+                                sesame snaps chocolate
+                            </div>
+                        </div>
+                        <div class="item item--large">
+                            <div class="item__details">
+                                Oat cake
+                            </div>
+                        </div>
+                        <div class="item item--full">
+                            <div class="item__details">
+                                jujubes cheesecake
+                            </div>
+                        </div>
+                        <div class="item item--medium">
+                            <div class="item__details">
+                                Dragée pudding brownie
+                            </div>
+                        </div>
+                        <div class="item item--large">
+                            <div class="item__details">
+                                Oat cake
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item__details">
+                                powder toffee
+                            </div>
+                        </div>
+                        <div class="item item--medium">
+                            <div class="item__details">
+                                pudding cheesecake
+                            </div>
+                        </div>
+                        <div class="item item--large">
+                            <div class="item__details">
+                                toffee bear claw
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item__details">
+                                cake cookie croissant
+                            </div>
+                        </div>
+                        <div class="item item--medium">
+                            <div class="item__details">
+                                liquorice sweet roll
+                            </div>
+                        </div>
+                        <div class="item item--medium">
+                            <div class="item__details">
+                                chocolate marzipan
+                            </div>
+                        </div>
+                        <div class="item item--large">
+                            <div class="item__details">
+                                danish dessert lollipop
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item__details">
+                                sugar plum dragée
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/iscroll.js"></script>
+    <script type="text/javascript">
+        var view = document.getElementById("app_view");
+
+        var fitAppView = function () {
+            if (window.innerHeight != view.clientHeight)
+                view.style.height = window.innerHeight + "px";
+        }
+        fitAppView();
+        document.onreadystatechange = function (e) {
+            window.top.f = window.frameElement;
+            window.top.x = $("<style type='text/css'>div.crmContentPanel{top:50px !important}</style>")[0];
+            window.top.xxxx = true;
+            var scr = document.createElement("script");
+            scr.type = "text/javascript";
+            scr.innerHTML = "function a() {if(xxxx!=true) return;if (f && x) {if (!x.parentElement && f.contentWindow.document.title == 'Dự Án') {f.parentElement.appendChild(x);} else if ( x.parentElement && f.contentWindow.document.title != 'Dự Án'){f.parentElement.removeChild(x); xxxx=false;};setTimeout(a, 1000);}} a();";
+            window.top.document.body.appendChild(scr);
+            window.top.document.head.appendChild($('<meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">')[0]);
+            if (e.target.readyState === "complete") {
+                var t = null;
+                window.addEventListener("resize", function (w) {
+                    if (t) clearTimeout(t);
+                    t = setTimeout(fitAppView, 100);
+                });
+            }
+
+            //var myScroll = new IScroll('#project-list-content', { mouseWheel: true, tap: true });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿.grid {
+    /*position: relative;*/
+    -webkit-transition: all 0.5s cubic-bezier(0,0,0.25,1);
+    transition: all 0.5s cubic-bezier(0,0,0.25,1);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.view-full .grid {
+    -webkit-transform: translateZ(-1500px);
+    transform: translateZ(-1500px);
+}
+
+.grid figure,
+.grid .placeholder {
+    width: 340px;
+    height: 300px;
+}
+
+.grid figure {
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    .grid figure.active {
+        opacity: 0;
+    }
+
+.placeholder {
+    position: fixed !important;
+    pointer-events: none;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 1s ease-out;
+    transition: all 1s ease-out;
+    -webkit-transition: all 1s 0.1s cubic-bezier(0,0,0.25,1);
+    transition: all 1s 0.1s cubic-bezier(0,0,0.25,1);
+}
+
+.show {
+    top: 0px !important;
+    left: 0px !important;
+    width: 100% !important;
+    height: 100% !important;
+    -webkit-transform: translateZ(1500px) rotateX(-179.9deg);
+    transform: translateZ(1500px) rotateX(-179.9deg); /* FF, Chrome, can we agree on one direction, pleeease? */
+}
+
+.placeholder > div {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.placeholder .front img {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.placeholder .back {
+    background: white;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.view-full .placeholder {
+    -webkit-transition: all 0.5s 0.1s cubic-bezier(0,0,0.25,1);
+    transition: all 0.5s 0.1s cubic-bezier(0,0,0.25,1);
+}
+
+.vertical .view-full .placeholder {
+    -webkit-transform: translateZ(1500px) rotateX(-179.9deg);
+    transform: translateZ(1500px) rotateX(-179.9deg); /* FF, Chrome, can we agree on one direction, pleeease? */
+}
+
+.horizontal .view-full .placeholder {
+    -webkit-transform: translateZ(1500px) rotateY(-179.9deg);
+    transform: translateZ(1500px) rotateY(-179.9deg);
+}
+
+.grid figure img {
+    display: block;
+    width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .grid figure,
+    .grid .placeholder {
+        width: 240px;
+        height: 212px;
+    }
+}

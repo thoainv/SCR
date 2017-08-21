@@ -1,0 +1,237 @@
+﻿body {
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+
+div, button, a {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+    div#app_view {
+        position: relative;
+        display: block;
+        width: 100%;
+        /*border: 1px solid #ccc;*/
+        -webkit-transition: height 0.5s; /* Safari */
+        transition: height 0.5s;
+        overflow: hidden !important;
+        background-color: #fff;
+    }
+
+        div#app_view > div.view {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+            div#app_view > div.view > div.content {
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                overflow-y: scroll;
+                -webkit-overflow-scrolling: touch;
+            }
+
+
+
+    div.section {
+        padding: 20px;
+    }
+
+        div.section > h1 {
+            font-size: 2rem;
+            margin: 10px 20px 20px 20px;
+        }
+
+.grid {
+    display: block;
+}
+
+    .grid > .cell {
+        display: block;
+        width: 33.33%;
+        float: left;
+        box-sizing: border-box;
+        padding: 15px;
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        transition: -webkit-transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+        cursor: pointer;
+        outline: none;
+    }
+
+        .grid > .cell > .item {
+            display: block;
+            -webkit-transition: -webkit-transform 0.3s ease-in-out;
+            transition: -webkit-transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+            box-sizing: border-box;
+            box-shadow: -2px 2px 10px 0px rgba(68, 68, 68, 0.4);
+        }
+
+        .grid > .cell:hover > .item, .grid > .hover > .item, .grid > .cell:focus > .item {
+            -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+        }
+
+        .grid > .cell > .item > .image {
+            position: relative;
+            background: url("https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            width: 100%;
+        }
+
+            .grid > .cell > .item > .image > .opacity-layer {
+                position: absolute;
+                background: #000;
+                width: 100%;
+                height: 100%;
+                -webkit-transition: opacity 0.3s ease-in-out;
+                transition: opacity 0.3s ease-in-out;
+                opacity: 0.4;
+            }
+
+        .grid > .cell:hover > .item > .image > .opacity-layer, .grid > .cell:focus > .item > .image > .opacity-layer, .grid > .hover > .item > .image > .opacity-layer {
+            opacity: 0;
+        }
+
+        .grid > .cell > .item > .content {
+            position: relative;
+            z-index: 1;
+            padding: 15px;
+            color: #444;
+            background: #fff;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            color: #828282;
+        }
+
+    .grid > div.active-cell > .item {
+        opacity: 0;
+    }
+
+/*@media (max-width: 1799px) {
+    .grid > .cell {
+        width: 33.3333333333%;
+    }
+}
+
+@media (max-width: 1599px) {
+    .grid > .cell {
+        width: 33.3333333333%;
+    }
+    .grid > .cell > .item > .image {
+        height: 200px;
+    }
+}*/
+
+@media (max-width: 900px) {
+    .grid > .cell {
+        width: 25%;
+    }
+
+        .grid > .cell > .item > .image {
+            height: 150px;
+        }
+}
+
+@media (max-width: 767px) {
+    .grid > .cell {
+        width: 33.333%;
+    }
+
+        .grid > .cell > .item > .image {
+            height: 200px;
+        }
+}
+
+@media (max-width: 640px) {
+    .grid > .cell {
+        width: 100%;
+    }
+
+        .grid > .cell > .item > .image {
+            height: 200px;
+        }
+}
+
+div.view-effect-1 {
+    -webkit-perspective: 1500px;
+    perspective: 1500px;
+    -webkit-perspective-origin: 50% 100%;
+    perspective-origin: 50% 100%;
+}
+
+/*effect 1*/
+div.view-effect-1 {
+    -webkit-perspective: 1500px;
+    perspective: 1500px;
+    -webkit-perspective-origin: 50% 100%;
+    perspective-origin: 50% 100%;
+}
+
+    div.view-effect-1 > div.content {
+        -webkit-transition: all 0.5s cubic-bezier(0,0,0.25,1);
+        transition: all 0.5s cubic-bezier(0,0,0.25,1);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+
+div.view-effect-1-take > div.content {
+    -webkit-transform: translateZ(-1500px);
+    transform: translateZ(-1500px);
+    overflow-y:hidden !important;
+}
+/*end effect 1*/
+
+.placeholder {
+	pointer-events: none;
+	position: absolute;
+	transform-style: preserve-3d;
+	transition: all 0.5s ease-out;
+    background:#000;
+}
+.placeholder > div {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+.placeholder .front{
+	width: 100%;
+	height: 100%;
+    background:#fff url(https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=);
+    background-size: cover;
+    background-position: center;
+}
+
+.placeholder .back {
+	background: white;
+	transform: rotateY(180deg);
+}
+
+.placeholder {
+	transition: all 0.5s 0.1s cubic-bezier(0,0,0.25,1);
+}
+
+.r {
+	transform: rotateX(179.9deg) ;
+}
+
+
+.horizontal .view-full .placeholder {
+	transform: translateZ(1500px) rotateY(-179.9deg);
+}
