@@ -151,6 +151,7 @@ var fitAppView = function () {
     if (window.top.innerHeight != view.clientHeight)
         view.style.height = window.top.innerHeight + "px";
 }
+
 document.onreadystatechange = function (e) {
     if (this.readyState == "complete") {
         fitAppView();
@@ -168,12 +169,11 @@ document.onreadystatechange = function (e) {
                 if (t) clearTimeout(t);
                 t = setTimeout(fitAppView, 100);
             });
-
-            new grid3D(document.getElementById('grid3d'));
         }
         app.addPage(new app.Page("page" + utilities.uniqueId(),
             function (o) {
                 var titleElm;
+                var gridWrap;
                 var grid;
                 var content = utilities.$a({
                     a: "div",
@@ -182,14 +182,16 @@ document.onreadystatechange = function (e) {
                     e: ["content"],
                     g: [
                         utilities.$a({
-                            a: "div", e: ["section"], g: [
+                            a: "div", e: ["contentPlaceHolder"], g: [
                                 titleElm = utilities.$a({ a: "h1", h: "Project" }),
-                                grid = utilities.$a({ a: "div", e: ["grid"] })
+                                gridWrap = utilities.$a({
+                                    a: "div", e: ["grid-wrap"],
+                                    g: [grid = utilities.$a({ a: "div", e: ["grid"] })]
+                                })
                             ]
                         })
                     ]
                 });
-
                 var renderItem = function (index, id, name, image) {
                     var item = utilities.$a({
                         a: "div",
@@ -216,60 +218,27 @@ document.onreadystatechange = function (e) {
                                 name: "touchleave mouseleave", func: function (e) {
                                     e.currentTarget.classList.remove("hover");
                                 }
-                            },
-                            {
-                                name: "click", func: function (ev) { o.takeEffect(ev) }
                             }
                         ]
                     });
+                    item.onclick = function (ev) { openItemHandler.open(ev) };
                     return item;
+                }
+                var openItemHandler = new function () {
+                    var self = this;
+                    var init = function () {
+                        gridWrap.classList.add("grid3DEffect-wrap");
+                    }
+                    this.open = function () {
+                        gridWrap.classList.add("view-full");
+                    }
+                    init();
                 }
                 Object.defineProperties(o, {
                     grid: { get: function () { return grid } },
                     renderItem: { get: function () { return renderItem } }
                 });
-                content.parentElement.classList.add("view-effect-1");
-                o.takeEffect = function (ev) {
-                    if (content.parentElement.classList.contains("view-effect-1-take")) {
-                        content.parentElement.classList.remove("view-effect-1-take");
-                        o.placeHolder.classList.remove("r");
 
-                        var l = ev.target.getBoundingClientRect();
-                        o.placeHolder.style.width = l.width + "px";
-                        o.placeHolder.style.height = l.height + "px";
-                        o.placeHolder.style.top = l.top + "px";
-                        o.placeHolder.style.left = l.left + "px";
-                        setTimeout(function () {
-                            o.target.classList.remove("active-cell");
-                            o.placeHolder.parentElement.removeChild(o.placeHolder);
-                        }, 1000)
-
-                    }
-                    else {
-                        content.parentElement.classList.add("view-effect-1-take");
-                        o.target = ev.currentTarget;
-                        o.target.classList.add("active-cell");
-                        o.placeHolder = utilities.$a({
-                            a: "div",
-                            b: o.getPageId() + "PlaceHolder",
-                            c: o.getView(),
-                            e: ["placeholder"],
-                            g: [
-                                utilities.$a({ a: "div", e: ["front"] }),
-                                utilities.$a({ a: "div", e: ["back"] })
-                            ]
-                        });
-                        var l = ev.target.getBoundingClientRect();
-                        o.placeHolder.style.width = l.width + "px";
-                        o.placeHolder.style.height = l.height + "px";
-                        o.placeHolder.style.top = l.top + "px";
-                        o.placeHolder.style.left = l.left + "px";
-                        setTimeout(function () {
-                            o.placeHolder.classList.add("r");
-                        }, 25)
-                    }
-
-                }
             },
             function (o) {
                 for (var i = 1; i <= 15; i++) {

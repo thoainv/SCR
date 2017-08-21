@@ -52,11 +52,8 @@ div, button, a {
 
 .grid-wrap {
     margin: 10px auto 0;
-    max-width: 1090px;
     width: 100%;
     padding: 0;
-    -webkit-perspective: 1500px;
-    perspective: 1500px;
 }
 
     .grid-wrap > .grid {
@@ -131,6 +128,24 @@ div, button, a {
     color: #828282;
 }
 
-.grid > div.active-cell > .item {
-    opacity: 0;
+/*Effect*/
+.grid3DEffect-wrap {
+    -webkit-perspective: 1500px;
+    perspective: 1500px;
+}
+
+    .grid3DEffect-wrap > .grid {
+        -webkit-transition: all 0.5s cubic-bezier(0,0,0.25,1);
+        transition: all 0.5s cubic-bezier(0,0,0.25,1);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+
+        .grid3DEffect-wrap > .grid > .active-cell {
+            opacity: 0;
+        }
+
+.view-full > .grid {
+    -webkit-transform: translateZ(-1500px);
+    transform: translateZ(-1500px);
 }
